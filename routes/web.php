@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\restapi\AuthApi;
 use Illuminate\Support\Facades\Route;
 
@@ -25,17 +26,17 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('/change_password', [AuthApi::class, 'changePassword'])->name('auth.change.password');
 });
 
-// /* Restapi api */
-// Route::group(['prefix' => 'api'], function () {
-//     require_once __DIR__ . '/api/restapi.php';
-// });
+/* Restapi api */
+Route::group(['prefix' => 'api'], function () {
+    require_once __DIR__ . '/api/restapi.php';
+});
 
-// /* Auth api */
-// Route::group(['prefix' => 'api', 'middleware' => ['auth.api']], function () {
-//     require_once __DIR__ . '/api/auth.php';
-// });
+/* Auth api */
+Route::group(['prefix' => 'api', 'middleware' => ['auth.api']], function () {
+    require_once __DIR__ . '/api/auth.php';
+});
 
-// /* Admin api */
-// Route::group(['prefix' => 'api/admin', 'middleware' => ['admin.api']], function () {
-//     require_once __DIR__ . '/api/admin.php';
-// });
+/* Admin api */
+Route::group(['prefix' => 'api/admin', 'middleware' => ['admin.api']], function () {
+    require_once __DIR__ . '/api/admin.php';
+});
